@@ -1,6 +1,6 @@
 <?php
-require __DIR__ . '/src/funcoes.php';
-
+// Esta linha chama todas as funções para o arquivo principal
+require __DIR__ . '/src/todasAsFuncoes.php';
 
 echo "****************************************\n";
 echo "Bem vindo ao sistema de lista de tarefas\n";
