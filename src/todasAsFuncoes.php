@@ -4,3 +4,4 @@ require __DIR__ . '/adicionarTarefas.php';
 require __DIR__ . '/concluirTarefas.php';
 require __DIR__ . '/listarTarefas.php';
 require __DIR__ . '/removerTarefas.php';
+require __DIR__ . '/conversorJson.php';

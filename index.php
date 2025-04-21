@@ -66,3 +66,4 @@ do {
             break;
     }
 } while ($opcao != 0);
+converterTarefas($tarefas);
