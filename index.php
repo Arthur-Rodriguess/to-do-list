@@ -39,7 +39,7 @@ do {
                 concluirTarefa($tarefas);
                 
                 echo "Deseja concluir outra tarefa? (s/n): ";
-                $resposta = strtolowe(trim(fgets(STDIN)));
+                $resposta = strtolower(trim(fgets(STDIN)));
             } while ($resposta === "s");
             break;
         // Se a opção for 4, o usuário irá remover tarefas
