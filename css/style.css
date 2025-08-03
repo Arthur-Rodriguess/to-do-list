@@ -1,0 +1,175 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: rgb(31, 31, 31);
+    color: white;
+}
+
+h1 {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 2px solid #333;
+    width: 600px;
+    margin: 80px auto;
+    margin-bottom: 20px;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    transition: 0.6s;
+    background-color: rgb(255, 255, 255);
+}
+
+form:hover {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+#inputTarefa {    
+    width: 500px;
+    height: 35px;
+    border-radius: 5px;
+    padding-top: 3px;
+    padding-left: 5px;
+    font-size: 20px;
+    transition: 0.3s;
+}
+
+#inputTarefa:hover {
+    width: 520px;
+    height: 40px;
+}
+
+
+input::placeholder {
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    transition: 0.2s;
+}
+
+#inputTarefa:focus::placeholder {
+    color: transparent;
+}
+
+button {
+    display: inline;
+    width: 120px;
+    height: 35px;
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: transparent;
+    transition: 0.2s;
+}
+
+button:hover {
+    background-color: rgb(31, 31, 31);
+    color: white;
+    height: 40px;
+    width: 130px;
+}
+
+button:active {
+    color: green;
+}
+
+.tarefas {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background-color: white;
+    width: 600px;
+    margin: auto;
+    color: #333;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    transition: 0.6s;
+}
+
+.tarefas:hover {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+
+.tarefas ul li {
+    font-size: 20px;
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.tarefas ul li span {
+    margin-right: 20px;
+}
+
+.alterar {
+    font-style: none;
+    color: #333;
+    margin-right: 10px;
+    background-color: transparent;
+    border: 1px solid black;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: 0.2s;
+}
+
+.alterar:hover {
+    padding: 7px;
+}
+
+#concluir:hover {
+    background-color: rgb(0, 199, 0);
+    color: black;
+}
+
+#concluir:active {
+    background-color: #333;
+    color: white;
+}
+
+#excluir {
+    padding: 5px 12px 5px 12px;
+}
+
+#excluir:hover {
+    padding: 7px 14px 7px 14px;
+    background-color: red;
+    color: black;
+}
+
+#excluir:active {
+    background-color: #333;
+    color: white;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.nova {
+    animation: aparecer 0.5s ease-out;
+}

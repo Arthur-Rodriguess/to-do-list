@@ -22,9 +22,12 @@ $tarefasArray[] = [
     'concluida' => false
 ];
 
+$ultimoId = count($tarefasArray) - 1;
+
 $tarefasJson = json_encode($tarefasArray, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 
 file_put_contents($caminho, $tarefasJson);
 
-header('Location: ../index.php');
+
+header("Location: ../index.php?nova=$ultimoId");
 exit;

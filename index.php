@@ -4,40 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Inicial</title>
-    <style>
-        body { font-family: Arial, Helvetica, sans-serif; }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>Minha lista de tarefas</h1>
+    <h1>Minha Lista de Tarefas</h1>
     <form action="src/adicionar.php" method="post" autocomplete="off">
-        <input type="text" name="tarefa" placeholder="Digite uma nova tarefa">
+        <input type="text" name="tarefa" id="inputTarefa" placeholder="Digite uma nova tarefa"> <br>
         <button type="submit">Adicionar</button>
     </form>
 
     <br>
 
-    <h2>Tarefas:</h2>
-    <ul>
-    <?php
-    if(file_exists('tarefas.json'))
-    {
-        $tarefas = json_decode(file_get_contents('tarefas.json'), true);
-    }
+    <div class="tarefas">
+        <h2>Tarefas:</h2>
+        <ul>
+        <?php
 
-    if(!empty($tarefas)) {    
-        foreach($tarefas as $index => $tarefa) {
-            $texto = htmlspecialchars($tarefa['texto']);
-            $concluida = $tarefa['concluida'] ? '✅' : '';
-            echo "<li>$texto $concluida
-                    <a href='src/concluir.php?id=$index'>[Concluir]</a>
-                    <a href='src/excluir.php?id=$index'>[Excluir]</a>
-                </li>";
+        $novaTarefaId = isset($_GET['nova']) ? (int) $_GET['nova'] : -1;
+
+        if(file_exists('tarefas.json'))
+        {
+            $tarefas = json_decode(file_get_contents('tarefas.json'), true);
         }
-    } else {
-        echo "<p style='color: red;'>Não há nenhuma tarefa adicionada</p>";
-    }
-    ?>
-    </ul>
+
+        if(!empty($tarefas)) {    
+            foreach($tarefas as $index => $tarefa) {
+
+                $texto = htmlspecialchars($tarefa['texto']);
+                $concluida = $tarefa['concluida'] ? '✅' : '';
+
+                $classe = ($index === $novaTarefaId) ? "class='nova'" : ""; 
+
+                echo "<li $classe><span>$texto $concluida</span>
+                        <a href='src/concluir.php?id=$index' class='alterar' id='concluir'>Concluir</a>
+                        <a href='src/excluir.php?id=$index' class ='alterar' id='excluir'>Excluir</a>
+                    </li>";
+            }
+        } else {
+            echo "<p style='color: red;'>Não há nenhuma tarefa adicionada</p>";
+        }
+        ?>
+        </ul>
+    </div>
 </body>
 </html>
