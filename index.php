@@ -20,7 +20,18 @@
         <ul>
         <?php
 
+        function verificarConcluido($tarefas): bool
+        {
+            foreach($tarefas as $index => $tarefa) {
+                if($tarefas[$index]['concluida'] === false){
+                    return true;
+                }
+            }
+            return false;
+        }
+
         $novaTarefaId = isset($_GET['nova']) ? (int) $_GET['nova'] : -1;
+        $true = true;
 
         if(file_exists('tarefas.json'))
         {
@@ -40,6 +51,14 @@
                         <a href='src/excluir.php?id=$index' class ='alterar' id='excluir'>Excluir</a>
                     </li>";
             }
+
+            if(count($tarefas) > 1 && verificarConcluido($tarefas)) {
+                    echo "
+                    <div class='alterar-tudo'>
+                        <a href='src/concluir.php?true=$true' id='concluir-tudo' class='alterar-tudo-link'>Concluir Tudo</a>
+                        <a href='src/excluir.php?true=$true' id='excluir-tudo' class='alterar-tudo-link'>Excluir Tudo</a>
+                    </div>";
+                }
         } else {
             echo "<p style='color: red;'>Não há nenhuma tarefa adicionada</p>";
         }

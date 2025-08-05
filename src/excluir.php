@@ -16,4 +16,22 @@ if(isset($_GET['id'])) {
     }
 }
 
+if(isset($_GET['true'])) {
+    $true = (bool) $_GET['true'];
+    $arquivo = '../tarefas.json';
+
+    if(file_exists($arquivo)) {
+        $tarefasJson = file_get_contents($arquivo);
+        $tarefasArray = json_decode($tarefasJson, true);
+
+        if($true === true) {
+            foreach($tarefasArray as $index => $tarefa) {
+                unset($tarefasArray[$index]);
+            }
+            file_put_contents($arquivo, json_encode($tarefasArray, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+        }
+    }
+}
+ 
 header('Location: ../index.php');
+exit;
