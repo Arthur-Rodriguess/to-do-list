@@ -8,22 +8,36 @@
 </head>
 <body>
     <h1>Minha Lista de Tarefas</h1>
-    <form action="src/adicionar.php" method="post" autocomplete="off">
+    <form action="src/adicionar.php" method="post" autocomplete="off" id="form-tarefa">
+        <?php if (isset($_GET['erro'])) {
+            echo "<p style='color: red; margin-bottom: 20px'>Por favor, escreve uma tarefa antes de adicionar!</p>";
+        }
+        ?>
         <input type="text" name="tarefa" id="inputTarefa" placeholder="Digite uma nova tarefa"> <br>
         <button type="submit">Adicionar</button>
     </form>
 
+    <script>
+        document.getElementById("form-tarefa").addEventListener("submit", function(e) {
+            const tarefa = document.getElementById("inputTarefa").value.trim();
+            if (tarefa === "") {
+                e.preventDefault();
+                alert("Você precisa escrever algo antes de adicionar!");
+            }
+        })
+    </script>
+
     <br>
 
-    <div class="tarefas">
-        <h2>Tarefas:</h2>
+    <div class="tarefas" id="tarefas">
+        <h2>Tarefas</h2>
         <ul>
         <?php
 
         function verificarConcluido($tarefas): bool
         {
             foreach($tarefas as $index => $tarefa) {
-                if($tarefas[$index]['concluida'] === false){
+                if($tarefas[$index]['concluida'] === 0){
                     return true;
                 }
             }
@@ -46,9 +60,14 @@
 
                 $classe = ($index === $novaTarefaId) ? "class='nova'" : ""; 
 
-                echo "<li $classe><span>$texto $concluida</span>
-                        <a href='src/concluir.php?id=$index' class='alterar' id='concluir'>Concluir</a>
-                        <a href='src/excluir.php?id=$index' class ='alterar' id='excluir'>Excluir</a>
+                echo "<li $classe>
+                        <div class='item-tarefa'>
+                            <span>$texto $concluida</span>
+                            <div class='botoes'>
+                                <a href='src/concluir.php?id=$index' class='alterar' id='concluir'>Concluir</a>
+                                <a href='src/excluir.php?id=$index' class ='alterar' id='excluir'>Excluir</a>
+                            </div>
+                        </div>
                     </li>";
             }
 
@@ -60,7 +79,7 @@
                     </div>";
                 }
         } else {
-            echo "<p style='color: red;'>Não há nenhuma tarefa adicionada</p>";
+            echo "<p style='color: red;' class='sem-tarefa'>Não há nenhuma tarefa adicionada</p>";
         }
         ?>
         </ul>

@@ -2,12 +2,8 @@
 
 $tarefa = trim(htmlspecialchars($_POST['tarefa']));
 
-if(empty($tarefa))
-{
-    echo "Nome da tarefa é obrigatório!";
-    http_response_code(400);
-    echo "<br>";
-    echo "<a href='../index.php'>voltar</a>";
+if ($tarefa === '') {
+    header("Location: ../index.php?erro=1");
     exit;
 }
 
@@ -19,7 +15,7 @@ $tarefasArray = json_decode($tarefasJson, true);
 
 $tarefasArray[] = [
     'texto' => $tarefa,
-    'concluida' => false
+    'concluida' => 0
 ];
 
 $ultimoId = count($tarefasArray) - 1;

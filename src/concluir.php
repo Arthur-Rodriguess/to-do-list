@@ -10,7 +10,7 @@ if(isset($_GET['id'])) {
         $tarefasArray = json_decode($tarefasJson, true);
         
         if(isset($tarefasArray[$id])) {
-            $tarefasArray[$id]['concluida'] = true;
+            $tarefasArray[$id]['concluida'] = $tarefasArray[$id]['concluida'] ? 0 : 1;
             file_put_contents($arquivo, json_encode($tarefasArray, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
         }
     }
@@ -32,5 +32,5 @@ if(isset($_GET['true'])) {
         }
     }
 }
-header('Location: ../index.php');
+header('Location: ../index.php#tarefas');
 exit;

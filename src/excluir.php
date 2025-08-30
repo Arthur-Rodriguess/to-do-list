@@ -32,6 +32,6 @@ if(isset($_GET['true'])) {
         }
     }
 }
- 
-header('Location: ../index.php');
+
+header('Location: ../index.php#tarefas');
 exit;
