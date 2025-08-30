@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
     padding: 0;
     margin: 0;
@@ -6,9 +8,11 @@
 }
 
 body {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
     background-color: rgb(31, 31, 31);
     color: white;
+    padding-bottom: 50px;
 }
 
 h1 {
@@ -16,6 +20,7 @@ h1 {
     text-align: center;
     justify-content: center;
     margin-top: 40px;
+    font-weight: 800;
 }
 
 form {
@@ -24,7 +29,7 @@ form {
     align-items: center;
     flex-direction: column;
     border: 2px solid #333;
-    width: 600px;
+    width: 45%;
     margin: 80px auto;
     margin-bottom: 20px;
     padding: 30px;
@@ -39,7 +44,7 @@ form:hover {
 }
 
 #inputTarefa {    
-    width: 500px;
+    width: 90%;
     height: 35px;
     border-radius: 5px;
     padding-top: 3px;
@@ -49,7 +54,7 @@ form:hover {
 }
 
 #inputTarefa:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 
 
@@ -78,11 +83,7 @@ button {
 button:hover {
     background-color: rgb(31, 31, 31);
     color: white;
-    transform: scale(1.1);
-}
-
-button:active {
-    color: green;
+    transform: scale(1.05);
 }
 
 .tarefas {
@@ -92,7 +93,7 @@ button:active {
     align-items: center;
     gap: 10px;
     background-color: white;
-    width: 600px;
+    width: 45%;
     margin: auto;
     color: #333;
     padding: 20px;
@@ -105,6 +106,9 @@ button:active {
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
+.tarefas h2 {
+    font-weight: 800;
+}
 
 .tarefas ul li {
     font-size: 20px;
@@ -114,6 +118,24 @@ button:active {
 
 .tarefas ul li span {
     margin-right: 20px;
+}
+
+.item-tarefa {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.item-tarefa span {
+    flex-grow: 1;
+    word-break: break-word;
+}
+
+.botoes {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
 }
 
 .alterar {
@@ -162,6 +184,7 @@ button:active {
 .alterar-tudo {
     display: flex;
     gap: 40px;
+    justify-content: center;
 }
 
 .alterar-tudo-link {
@@ -170,7 +193,11 @@ button:active {
     color: #333;
     font-size: 16px;
     border-radius: 5px;
-    transition: 0.2s;
+    transition: 0.3s;
+}
+
+.alterar-tudo-link:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 #concluir-tudo:hover {
@@ -190,6 +217,11 @@ button:active {
     color: black;
 }
 
+#excluir-tudo:active {
+    background-color: #333;
+    color: white;
+}
+
 @keyframes aparecer {
     from {
         opacity: 0;
@@ -203,4 +235,31 @@ button:active {
 
 .nova {
     animation: aparecer 0.5s ease-out;
+}
+
+.sem-tarefa {
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    form {
+        width: 85%;
+    }
+
+    #inputTarefa {
+        width: 100%;
+    }
+
+    .tarefas {
+        width: 85%;
+        gap: 40px;
+    }
+
+    .botoes {
+        flex-direction: column;
+    }
+    
+    .alterar-tudo-link {
+        text-align: center;
+    }
 }
